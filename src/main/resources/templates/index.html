@@ -2,7 +2,7 @@
 <head>
     <th:block th:insert="~{meta}"></th:block>
     <link th:href="@{/emjdjd/css/main.css}" type="text/css" rel="stylesheet">
-    <script type="text/javascript" charset="UTF-8" async="" src="https://sdk.51.la/js-sdk-pro.min.js" id="LA_COLLECT"></script>
+<!--    <script type="text/javascript" charset="UTF-8" async="" src="https://sdk.51.la/js-sdk-pro.min.js" id="LA_COLLECT"></script>-->
     <script>
         var sqdapi = 'https://shuoqiudi10.com'
     </script>
@@ -14,7 +14,7 @@
 <th:block th:insert="~{header::header}"></th:block>
 <main class="main">
     <div class="flex-between live-content" style="display: flex;flex-direction: column">
-        <div style="display: flex;flex-wrap: wrap;justify-content: space-around;border: 1px solid #e2e3e8;border-radius: 4px;margin-bottom: 10px;margin-top: 10px">
+        <div style="display: flex;flex-wrap: wrap;justify-content: space-around;border: 1px solid var(--page_border);border-radius: 4px;margin-bottom: 10px;margin-top: 10px">
             <a th:each="date:${date_list}"
                style="width: 76px;height: 60px;;display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 5px;margin-bottom: 5px"
                th:href="${list_type_url}+'/'+${#dates.format(date,'yyyy-MM-dd')}">
@@ -34,11 +34,10 @@
         </div>
 </main>
 <th:block th:insert="~{footer::footer}"></th:block>
-<div class="back_top"  onclick="window.scrollTo(0,0)">返回<br>顶部</div>
+<th:block th:insert="~{back_top}"></th:block>
 
 <script src="https://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="/Public/static/js/global.js"></script>
-<script type="text/javascript" src="/Public/static/js/global.js"></script>
+<!--<script type="text/javascript" src="/Public/static/js/global.js"></script>-->
 <script>
     $(function () {
         $("img").lazyload({
@@ -50,6 +49,7 @@
     !function (p) {
         "use strict";
         !function (t) {
+            return
             var s = window,
                 e = document,
                 i = p,
@@ -68,9 +68,10 @@
         ck: "JLHwWhMeGRhN3eot"
     });
 </script>
-<script th:src="@{/emjdjd/js/swiper.min.js}"></script>
+<!--<script th:src="@{/emjdjd/js/swiper.min.js}"></script>-->
 <script>
     $(function () {
+        return
         var swiper = new Swiper(".mySwiper", {
             lazy: true,
             slidesPerView: 4,

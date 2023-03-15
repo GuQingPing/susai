@@ -5,16 +5,27 @@
         <img th:src="@{/base/img/flimg_3.png}" style="margin-right: 5px;"/>
       </div>
       <div class="time" th:text="${#dates.format(item.getMatchStartTime(),'HH:mm')}"></div>
-      <a class="live-link mark">NBA</a>
+      <a class="live-link omit">NBA</a>
       <div class="duizhen">
         <a class="flex" href="/zuqiu/3855577" title="" target="_blank">
           <div class="f-right" style="margin-left: 30px;width: max-content;">
             <a class="live-link" th:text="${item.leftName}"></a>
+            <img class="team-logo" th:src="${item.leftImg}" lazyload="lazy"
+                 data-original="https://cdn.sportnanoapi.com/football/team/d20ed1da4f299cc3ef0e1e9eb06eced1.png"
+                 style="display: inline;">
           </div>
           <div class="score-wrap">
-            <span class="score">vs</span>
+            <strong class="score"
+                    th:if="${not #lists.isEmpty(item.mainScore)}"
+                    th:text="${item.mainScore.get(0)+':'+item.visitingScore.get(0)}"
+                    style="color: var(--list_text_hover)">
+            </strong>
+            <span class="text" th:if="${#lists.isEmpty(item.mainScore)}">vs</span>
           </div>
           <div class="f-left" style="width: max-content;">
+            <img class="team-logo" th:src="${item.rightImg}" lazyload="lazy"
+                 data-original="https://cdn.sportnanoapi.com/football/team/dff00f1fd4a7dd2feac000b462416867.png"
+                 style="display: inline;">
             <a class="live-link" th:text="${item.rightName}"></a>
           </div>
         </a>
@@ -32,6 +43,92 @@
     </ul>
   </div>
   <style>
+    .live-list a:hover {
+      color: #dd4b39;
+    }
+
+    .live-list .riqi p {
+      border-bottom: solid 1px #dd4b39;
+      padding: 10px 10px;
+      font-size: 20px;
+    }
+    .live-list .riqi span {
+      margin-left: 0.5rem;
+    }
+    .live-list .item {
+      padding: 0 20px;
+      height: 50px;
+      border-top: 1px solid var(--list_border);
+      display: flex;
+      align-items: center;
+      background: var(--list_item_bg);
+    }
+    .live-list .item h2 {
+      font-weight: normal;
+      font-size: 14px;
+      border: solid 1px #666;
+      width: 80px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .live-list .status-bar span {
+      font-weight: bold;
+      color: #dd4b39;
+      padding-left: 10px;
+      display: block;
+      position: relative;
+      font-size: 18px;
+    }
+    .live-list .status-bar span::before {
+      content: '';
+      width: 5px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      background: #dd4b39;
+    }
+    .live-list .duizhen .live-link {
+      cursor: pointer;
+      width: 100%;
+    }
+    .live-list .duizhen .score-wrap span,
+    .live-list .duizhen .score-wrap strong {
+      display: block;
+      width: 100%;
+    }
+    .live-list .duizhen {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      width: 560px;
+    }
+    .live-list .duizhen .live-link {
+      cursor: pointer;
+      width: 100%;
+    }
+    .live-list .duizhen .score-wrap {
+      width: 100px;
+      text-align: center;
+    }
+    .live-list .duizhen .f-left,
+    .live-list .duizhen .f-right {
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
+    .live-list .duizhen .f-left .team-logo {
+      margin-right: 1rem;
+    }
+    .live-list .duizhen .f-right .team-logo {
+      margin-left: 1rem;
+    }
+    .live-list .duizhen .team-logo {
+      width: 36px;
+      height: 36px;
+    }
     ul.pagination {
       display: inline-block;
       padding: 0;
@@ -55,8 +152,8 @@
       width: 102px;
       height: 30px;
       border-radius: 7px;
-      color: #fff;
-      background: #b9b9b9;
+      color: var(--list_button_text);
+      background: var(--list_button_bg);
       text-align: center;
       display: flex;
       align-items: center;
@@ -64,21 +161,27 @@
     }
     .live-link.button:hover{
       color: #fff !important;
-      background: #c9c6c6;
+      background: var(--list_button_hover_bg);
     }
     .live-link.button img{
       margin-right: 5px;
     }
     .live-link.button.active{
-      background: #ff4d4d;
+      background: var(--list_button_active_bg);
     }
-    .live-link.mark{
+    .live-link.button.active:hover{
+      background: var(--list_button_active_hover_bg);
+    }
+    .live-link.omit{
       cursor: pointer;
-      color: #999;
+      color: var(--list_omit);
       margin-left: 40px;
     }
-    .live-link.mark:hover{
-      color:#dd4b39;
+    .live-link.omit:hover{
+      color:var(--list_text_hover);
+    }
+    .live-list .item:hover{
+      background: var(--list_item_hover_bg);
     }
   </style>
 </div>

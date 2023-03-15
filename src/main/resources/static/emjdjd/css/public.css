@@ -1,0 +1,59 @@
+.reverse {
+    flex-flow: row-reverse;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 40;
+    background-color: #ddd;
+}
+::-webkit-scrollbar-thumb {
+    /*婊氬姩鏉￠噷闈㈠皬鏂瑰潡*/
+    background-color: #999;
+    border-radius: 0;
+}
+::-webkit-scrollbar-track {
+    /*婊氬姩鏉￠噷闈㈣建閬�*/
+    background: #ededed;
+}
+.flex {
+    display: flex;
+    align-items: center;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+.flex-reverse {
+    flex-direction: row-reverse;
+}
+.flex-around {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+.color__main {
+    color: #dd4b39;
+}
+.win {
+    color: #dd4b39;
+}
+.lose {
+    color: #008000;
+}
+.f-left {
+    text-align: left !important;
+    justify-content: flex-start;
+}
+.f-right {
+    text-align: right !important;
+    justify-content: flex-end;
+}
